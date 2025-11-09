@@ -4,13 +4,14 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Your Academy – Learn with Confidence</title>
-  <meta name="description" content="Local coaching center for [subjects]. Free trial and sample lessons available." />
+  <meta name="description" content="Local coaching center for school subjects. Free trial and sample lessons available." />
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
   <div class="container">
     <header>
       <div class="brand">Your Academy</div>
+
       <nav aria-label="Main navigation">
         <a href="#courses">Courses</a>
         <a href="#gallery">Gallery</a>
@@ -19,14 +20,14 @@
     </header>
 
     <main>
-      <section class="hero">
+      <section class="hero" aria-labelledby="hero-heading">
         <div class="hero-left">
-          <h1>Practical, affordable coaching for school & competitive success</h1>
+          <h1 id="hero-heading">Practical, affordable coaching for school & competitive success</h1>
           <p class="lead">Personalized courses for grades 6–12. Small batches, experienced tutors, sample lessons available – book a free trial today.</p>
 
           <div class="cta-group">
-            <button class="btn btn-primary" id="btn-trial">Book Free Trial</button>
-            <button class="btn btn-ghost" id="btn-courses">View Courses</button>
+            <button class="btn btn-primary" id="btn-trial" aria-controls="contact">Book Free Trial</button>
+            <button class="btn btn-ghost" id="btn-courses" aria-controls="courses">View Courses</button>
           </div>
 
           <div class="card why" >
@@ -39,13 +40,14 @@
           </div>
         </div>
 
-        <aside class="hero-right">
+        <aside class="hero-right" aria-label="Sample lesson">
           <div class="card">
             <strong>Sample tutorial</strong>
             <div class="video-wrap">
               <!-- privacy-friendly responsive embed -->
               <div class="embed-wrap">
                 <iframe
+                  loading="lazy"
                   src="https://www.youtube-nocookie.com/embed/rNSIwjmynYQ?start=0&rel=0"
                   title="Sample Tutorial"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -58,61 +60,79 @@
         </aside>
       </section>
 
-      <section id="courses" class="section">
-        <h2>Popular Courses</h2>
-        <div class="courses">
-          <article class="course-card">
+      <section id="courses" class="section" aria-labelledby="courses-heading">
+        <h2 id="courses-heading">Popular Courses</h2>
+        <div class="courses" role="list">
+          <article class="course-card" role="listitem" aria-label="Class 10 Maths – Concept to Confidence">
             <h4>Class 10 Maths – Concept to Confidence</h4>
             <p class="muted meta">40 hours • Weekend batches • ₹6,000</p>
-            <button class="btn btn-primary full">Enroll / Book Trial</button>
+            <button class="btn btn-primary full" data-course="Class 10 Maths">Enroll / Book Trial</button>
           </article>
 
-          <article class="course-card">
+          <article class="course-card" role="listitem" aria-label="Class 12 Physics – Board + JEE Prep">
             <h4>Class 12 Physics – Board + JEE Prep</h4>
             <p class="muted meta">60 hours • Small batches • ₹9,500</p>
-            <button class="btn btn-primary full">Enroll / Book Trial</button>
+            <button class="btn btn-primary full" data-course="Class 12 Physics">Enroll / Book Trial</button>
           </article>
 
-          <article class="course-card">
+          <article class="course-card" role="listitem" aria-label="Coding Foundations (8–12)">
             <h4>Coding Foundations (8–12)</h4>
             <p class="muted meta">Project-based • 12 sessions • ₹5,000</p>
-            <button class="btn btn-primary full">Enroll / Book Trial</button>
+            <button class="btn btn-primary full" data-course="Coding Foundations">Enroll / Book Trial</button>
           </article>
         </div>
       </section>
 
-      <section id="gallery" class="section">
-        <h2>Gallery & Sample Clips</h2>
-        <div class="gallery card gallery-grid">
-          <img src="https://picsum.photos/seed/1/400/300" alt="Classroom session">
-          <img src="https://picsum.photos/seed/2/400/300" alt="Student presenting project">
-          <img src="https://picsum.photos/seed/3/400/300" alt="Teacher conducting tutorial">
-          <img src="https://picsum.photos/seed/4/400/300" alt="Sample worksheet">
+      <section id="gallery" class="section" aria-labelledby="gallery-heading">
+        <h2 id="gallery-heading">Gallery & Sample Clips</h2>
+        <div class="gallery card gallery-grid" role="list">
+          <img loading="lazy" src="https://picsum.photos/seed/1/400/300" alt="Classroom session" role="listitem">
+          <img loading="lazy" src="https://picsum.photos/seed/2/400/300" alt="Student presenting project" role="listitem">
+          <img loading="lazy" src="https://picsum.photos/seed/3/400/300" alt="Teacher conducting tutorial" role="listitem">
+          <img loading="lazy" src="https://picsum.photos/seed/4/400/300" alt="Sample worksheet" role="listitem">
         </div>
       </section>
 
-      <section id="contact" class="section">
-        <h2>Contact & Book Trial</h2>
+      <section id="contact" class="section" aria-labelledby="contact-heading">
+        <h2 id="contact-heading">Contact & Book Trial</h2>
         <div class="card contact-grid">
           <div>
-            <form id="contact-form">
-              <label><input required name="name" placeholder="Parent / Student name" /></label>
-              <label><input required name="phone" placeholder="Phone number" /></label>
-              <label><input required name="email" type="email" placeholder="Email" /></label>
+            <form id="contact-form" method="post" novalidate>
               <label>
-                <select name="course">
+                <span class="sr-only">Parent or student name</span>
+                <input required name="name" type="text" placeholder="Parent / Student name" aria-label="Parent or student name" />
+              </label>
+
+              <label>
+                <span class="sr-only">Phone number</span>
+                <input required name="phone" type="tel" pattern="[0-9+\-\s()]{7,}" placeholder="Phone number" aria-label="Phone number" />
+              </label>
+
+              <label>
+                <span class="sr-only">Email</span>
+                <input required name="email" type="email" placeholder="Email" aria-label="Email" />
+              </label>
+
+              <label>
+                <span class="sr-only">Interested course</span>
+                <select name="course" aria-label="Interested course">
                   <option value="">Interested Course</option>
-                  <option>Class 10 Maths</option>
-                  <option>Class 12 Physics</option>
-                  <option>Coding Foundations</option>
+                  <option value="Class 10 Maths">Class 10 Maths</option>
+                  <option value="Class 12 Physics">Class 12 Physics</option>
+                  <option value="Coding Foundations">Coding Foundations</option>
                 </select>
               </label>
-              <label><textarea name="message" rows="3" placeholder="Any message / preferred time"></textarea></label>
+
+              <label>
+                <span class="sr-only">Message</span>
+                <textarea name="message" rows="3" placeholder="Any message / preferred time" aria-label="Any message or preferred time"></textarea>
+              </label>
+
               <button type="submit" class="btn btn-primary">Request Free Trial</button>
             </form>
           </div>
 
-          <div class="contact-info">
+          <div class="contact-info" aria-hidden="false">
             <p class="muted">Phone: +91 98765 43210</p>
             <p class="muted">Email: info@youracademy.example</p>
             <p class="muted">Address: 123, Locality, City</p>
@@ -123,7 +143,7 @@
 
     <footer>
       <div class="card footer-card">
-        <small>© <span id="year"></span> Your Academy – All rights reserved.</small>
+        <small>© <span id="year" aria-hidden="true"></span> Your Academy – All rights reserved.</small>
       </div>
     </footer>
   </div>
